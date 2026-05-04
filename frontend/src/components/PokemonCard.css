@@ -1,0 +1,182 @@
+/* ============================================
+   CARTA POKÉMON
+   ============================================ */
+.pokemon-card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: default;
+
+  /* Línea superior con el color del tipo */
+  border-top: 3px solid var(--type-color, #f5c542);
+}
+
+.pokemon-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Carta comprada: borde dorado */
+.pokemon-card.purchased {
+  border-top-color: var(--color-primary);
+  box-shadow: 0 0 0 1px rgba(245, 197, 66, 0.25);
+}
+
+/* ---- Badge "Adquirida" ---- */
+.card-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--color-primary);
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  z-index: 2;
+}
+
+/* ---- Imagen ---- */
+.card-image-wrap {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--type-color, #888) 20%, #1a1a2e),
+    var(--color-surface-2)
+  );
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+}
+
+.card-image {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+  /* Animación sutil de flotación */
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Imagen borrosa si no está comprada */
+.card-image.locked {
+  filter: blur(6px) brightness(0.4);
+}
+
+/* Ícono del candado centrado sobre la imagen */
+.lock-overlay {
+  position: absolute;
+  font-size: 2.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ---- Cuerpo de la carta ---- */
+.card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  color: var(--color-text);
+}
+
+.card-type {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #000;
+  text-transform: capitalize;
+  align-self: flex-start;
+}
+
+/* ---- Stats ---- */
+.card-stats {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.25rem 0;
+}
+
+.stat {
+  flex: 1;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-sm);
+  padding: 4px 6px;
+  text-align: center;
+  border: 1px solid var(--color-border);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+/* ---- Precio ---- */
+.card-price {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-primary);
+  letter-spacing: 1px;
+}
+
+/* ---- Botón comprar ---- */
+.btn-buy {
+  background: var(--color-primary);
+  color: #000;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  width: 100%;
+  transition: background 0.2s ease, transform 0.1s ease;
+  margin-top: auto;
+}
+
+.btn-buy:hover {
+  background: var(--color-primary-dark);
+  transform: scale(1.02);
+}
+
+.btn-buy:active { transform: scale(0.98); }
+
+.card-owned-label {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-success);
+  padding: 0.5rem;
+  margin-top: auto;
+}
+
+/* ---- Animación de flotación ---- */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}

@@ -1,0 +1,74 @@
+/* ============================================
+   VARIABLES GLOBALES — Tema PokéCards Market
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  /* Colores principales */
+  --color-bg: #0d0d1a;
+  --color-surface: #1a1a2e;
+  --color-surface-2: #16213e;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-primary: #f5c542;
+  --color-primary-dark: #c9a227;
+  --color-accent: #e74c3c;
+  --color-success: #2ecc71;
+  --color-error: #e74c3c;
+  --color-text: #f0f0f0;
+  --color-text-muted: #888aaa;
+
+  /* Tipografía */
+  --font-display: 'Bangers', cursive;    /* Títulos estilo carta */
+  --font-body: 'Nunito', sans-serif;     /* Texto general */
+
+  /* Espaciado */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+}
+
+/* ============================================
+   RESET Y BASE
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface); }
+::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 3px; }
+
+/* ============================================
+   UTILIDADES GLOBALES
+   ============================================ */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+img { display: block; max-width: 100%; }
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-body);
+}
+
+a { text-decoration: none; color: inherit; }
