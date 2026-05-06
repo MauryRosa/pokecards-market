@@ -9,8 +9,15 @@ const errorHandler    = require('./middleware/errorHandler')
 const app = express()
 
 // ── Middlewares globales ──────────────────────────────────────
+// Elimina la barra final del FRONTEND_URL si viene con ella
+const allowedOrigin = (process.env.FRONTEND_URL || '').replace(/\/$/, '')
+
 // Permite peticiones solo desde el frontend
-app.use(cors({ origin: process.env.FRONTEND_URL }))
+app.use(cors({
+  origin: allowedOrigin,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true
+}))
 
 // Parsea el body de las peticiones como JSON
 app.use(express.json())
